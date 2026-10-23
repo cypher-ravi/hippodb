@@ -1,0 +1,14 @@
+"""Token counting, so every system's context size is measured the same way."""
+
+from functools import cache
+
+import tiktoken
+
+
+@cache
+def _encoding() -> tiktoken.Encoding:
+    return tiktoken.get_encoding("cl100k_base")
+
+
+def count_tokens(text: str) -> int:
+    return len(_encoding().encode(text))
