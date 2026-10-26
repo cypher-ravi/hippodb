@@ -1,4 +1,4 @@
-"""Plain vector RAG: the baseline Engram has to beat.
+"""Plain vector RAG: the baseline HippoDB has to beat.
 
 Each conversation turn is one chunk, stamped with its session date and speaker.
 Retrieval embeds the question and returns the top-k turns by cosine similarity,
@@ -9,8 +9,8 @@ from __future__ import annotations
 
 import numpy as np
 
-from engram.bench.locomo import Turn
-from engram.embed import Embedder
+from hippodb.bench.locomo import Turn
+from hippodb.embed import Embedder
 
 
 def format_turn(turn: Turn) -> str:

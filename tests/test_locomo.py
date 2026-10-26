@@ -1,4 +1,4 @@
-from engram.bench import locomo
+from hippodb.bench import locomo
 
 
 def test_load_flattens_sessions_in_order(locomo_file):

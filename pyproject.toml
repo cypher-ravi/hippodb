@@ -1,5 +1,5 @@
 [project]
-name = "engram"
+name = "hippodb"
 version = "0.0.1"
 description = "A memory engine for AI agents: entities, linked facts with time and source, recall by association."
 readme = "README.md"
@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.scripts]
-engram-bench = "engram.bench.run:main"
+hippodb-bench = "hippodb.bench.run:main"
 
 [dependency-groups]
 dev = [

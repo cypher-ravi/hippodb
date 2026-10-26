@@ -1,5 +1,5 @@
-from engram.baselines.vector_rag import VectorRAG
-from engram.bench import locomo
+from hippodb.baselines.vector_rag import VectorRAG
+from hippodb.bench import locomo
 
 
 def test_retrieves_relevant_turn_with_date(locomo_file, embedder):

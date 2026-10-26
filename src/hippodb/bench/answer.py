@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import re
 
-from engram.llm import LLM, Completion
+from hippodb.llm import LLM, Completion
 
 ANSWER_SYSTEM = (
     "You answer questions about a long conversation between two people, using only the "

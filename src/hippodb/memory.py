@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Protocol
 
-from engram.bench.locomo import Turn
+from hippodb.bench.locomo import Turn
 
 
 class MemorySystem(Protocol):

@@ -1,8 +1,8 @@
-from engram.baselines.vector_rag import VectorRAG
-from engram.bench import locomo
-from engram.bench.answer import judge
-from engram.bench.run import evaluate, summarise
-from engram.llm import CachedLLM, Completion
+from hippodb.baselines.vector_rag import VectorRAG
+from hippodb.bench import locomo
+from hippodb.bench.answer import judge
+from hippodb.bench.run import evaluate, summarise
+from hippodb.llm import CachedLLM, Completion
 
 
 def test_evaluate_skips_adversarial_and_scores(locomo_file, embedder, llm):

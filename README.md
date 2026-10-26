@@ -1,10 +1,13 @@
-# engram
+# HippoDB
 
-A memory engine for AI agents. Engram stores **entities** and the **facts** that link
+A memory engine for AI agents. HippoDB stores **entities** and the **facts** that link
 them, each with the time it became true and the source it came from. It recalls by
 association (start from the entities a question mentions, spread to their neighbours),
 closes facts that stop being true instead of overwriting them, and publishes
 benchmarks against plain vector RAG.
+
+Named after the hippocampus, the part of the brain that links new experiences into
+lasting, associative memories.
 
 > Status: weekend 1 of 14. The benchmark harness and the vector-RAG baseline are in;
 > the graph prototype comes next.
@@ -24,9 +27,9 @@ Needs [uv](https://docs.astral.sh/uv/) and Python 3.11+.
 
 ```bash
 uv sync                                   # install
-uv run python -m engram.bench.download    # fetch LoCoMo into data/
+uv run python -m hippodb.bench.download    # fetch LoCoMo into data/
 cp .env.example .env                      # add ANTHROPIC_API_KEY or OPENAI_API_KEY
-uv run engram-bench --system rag --conversations 2
+uv run hippodb-bench --system rag --conversations 2
 ```
 
 The run prints accuracy by question category and the mean number of context tokens
@@ -48,12 +51,12 @@ uv run ruff format .
 ## Layout
 
 ```
-src/engram/
+src/hippodb/
   memory.py               MemorySystem interface every system implements
   baselines/vector_rag.py the baseline: one chunk per turn, top-k cosine
   bench/locomo.py         LoCoMo download + loader
   bench/answer.py         shared answer and judge prompts
-  bench/run.py            the engram-bench CLI
+  bench/run.py            the hippodb-bench CLI
   embed.py, llm.py        local embeddings; Anthropic/OpenAI client with cache
 ```
 
