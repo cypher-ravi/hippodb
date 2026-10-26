@@ -4,8 +4,8 @@ import zlib
 import numpy as np
 import pytest
 
-from engram.embed import normalise
-from engram.llm import Completion
+from hippodb.embed import normalise
+from hippodb.llm import Completion
 
 SAMPLE = {
     "sample_id": "conv-test",
@@ -90,7 +90,7 @@ class ScriptedLLM:
 @pytest.fixture(autouse=True)
 def offline_token_count(monkeypatch):
     """tiktoken downloads its vocabulary on first use; keep tests offline."""
-    monkeypatch.setattr("engram.bench.run.count_tokens", lambda text: len(text.split()))
+    monkeypatch.setattr("hippodb.bench.run.count_tokens", lambda text: len(text.split()))
 
 
 @pytest.fixture

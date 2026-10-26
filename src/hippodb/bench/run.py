@@ -1,6 +1,6 @@
 """Run a memory system on LoCoMo and report accuracy and tokens per answer.
 
-uv run engram-bench --system rag --conversations 2
+uv run hippodb-bench --system rag --conversations 2
 """
 
 from __future__ import annotations
@@ -14,11 +14,11 @@ from dataclasses import asdict, dataclass
 from datetime import datetime
 from pathlib import Path
 
-from engram.bench import locomo
-from engram.bench.answer import answer, judge
-from engram.llm import LLM
-from engram.memory import MemorySystem
-from engram.tokens import count_tokens
+from hippodb.bench import locomo
+from hippodb.bench.answer import answer, judge
+from hippodb.llm import LLM
+from hippodb.memory import MemorySystem
+from hippodb.tokens import count_tokens
 
 
 @dataclass
@@ -99,8 +99,8 @@ def print_summary(name: str, summary: dict) -> None:
 
 def build_system(name: str, k: int) -> MemorySystem:
     if name == "rag":
-        from engram.baselines.vector_rag import VectorRAG
-        from engram.embed import FastEmbedder
+        from hippodb.baselines.vector_rag import VectorRAG
+        from hippodb.embed import FastEmbedder
 
         return VectorRAG(FastEmbedder(), k=k)
     raise SystemExit(f"Unknown system: {name}")
@@ -117,7 +117,7 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--out", type=Path, default=Path("results"))
     args = parser.parse_args(argv)
 
-    from engram.llm import from_env
+    from hippodb.llm import from_env
 
     _load_dotenv()
     llm = from_env(args.model)

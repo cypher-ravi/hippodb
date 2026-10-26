@@ -1,9 +1,9 @@
 """Download the benchmark datasets into data/.
 
-uv run python -m engram.bench.download
+uv run python -m hippodb.bench.download
 """
 
-from engram.bench import locomo
+from hippodb.bench import locomo
 
 if __name__ == "__main__":
     path = locomo.download()
