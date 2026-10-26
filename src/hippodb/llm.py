@@ -104,8 +104,8 @@ class CachedLLM:
 
 
 def from_env(model: str | None = None) -> LLM:
-    """Pick a provider from ENGRAM_LLM_PROVIDER or whichever API key is set."""
-    provider = os.environ.get("ENGRAM_LLM_PROVIDER")
+    """Pick a provider from HIPPODB_LLM_PROVIDER or whichever API key is set."""
+    provider = os.environ.get("HIPPODB_LLM_PROVIDER")
     if not provider:
         if os.environ.get("ANTHROPIC_API_KEY"):
             provider = "anthropic"
@@ -113,6 +113,6 @@ def from_env(model: str | None = None) -> LLM:
             provider = "openai"
         else:
             raise SystemExit("Set ANTHROPIC_API_KEY or OPENAI_API_KEY (see .env.example).")
-    model = model or os.environ.get("ENGRAM_LLM_MODEL") or DEFAULT_MODELS[provider]
+    model = model or os.environ.get("HIPPODB_LLM_MODEL") or DEFAULT_MODELS[provider]
     inner: LLM = AnthropicLLM(model) if provider == "anthropic" else OpenAILLM(model)
     return CachedLLM(inner)
